@@ -188,10 +188,30 @@ function healPlayerHandler() {
     endRound();
 }
 function printLogHandler() {
-    for (let i = 0; i < batleLog.length; i++){
+    for (let i = 0; i < batleLog.length; i++) { //for loop
         console.log('-------');
     }
-    console.log(batleLog);
+    let j = 0;
+    // while (j < 3) {
+    //     console.log(j);
+    //     j++
+    // }
+    do {
+        console.log(j);
+        j++
+    } while (j < 3)
+    // for (let i = 0; i < batleLog.length; i++){
+    // console.log(batleLog[i]);
+    // }
+    let i = 0;
+    for (const logElement of batleLog) { // for-of loop
+        console.log(`#${i}`);
+        for (const key in logElement) {
+            console.log(`#${key} => ${logElement[key]}`);
+        }
+        i++
+    }
+
 }
 // used an arrow function for the types of attack
 attackBtn.addEventListener('click', attackHandler => {
