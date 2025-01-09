@@ -1,6 +1,7 @@
 const enteredValue = prompt('Maximum life for you end the monster.', '100');
 let chosenMaxLife = parseInt(enteredValue);
 let batleLog = [];
+let lastLoggedEntry;
 
 // This is an if check to be sure the input is number
 if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
@@ -27,6 +28,7 @@ let hasBonusLife = true;
 
 adjustHealthBars(chosenMaxLife);
 
+// Switch case
 function writeToLog(event, value, monsterHealth, playerHealth) {
     let logEntry = {
         event: event,
@@ -196,25 +198,35 @@ function printLogHandler() {
     //     console.log(j);
     //     j++
     // }
-    do {
-        console.log(j);
-        j++
+    outerWhile: do {
+        console.log('Outer', j);
+        innerFor: for(let k = 0; k < 5; k++) {
+            if (k === 3) {
+                break outerWhile; //LABEL STATEMENT. stops the outer loop when the inner loop gets to number 3
+            }
+            console.log('inner', k);
+        }
+        j++;
     } while (j < 3)
     // for (let i = 0; i < batleLog.length; i++){
     // console.log(batleLog[i]);
     // }
     let i = 0;
     for (const logElement of batleLog) { // for-of loop
-        console.log(`#${i}`);
-        for (const key in logElement) {
-            console.log(`#${key} => ${logElement[key]}`);
+        if (!lastLoggedEntry && lastLoggedEntry !== 0|| lastLoggedEntry < i) {
+            console.log(`#${i}`);
+            for (const key in logElement) {
+                console.log(`#${key} => ${logElement[key]}`);
+            }
+            lastLoggedEntry = i;
+            break;
         }
-        i++
+        i++;
     }
 
 }
 // used an arrow function for the types of attack
-attackBtn.addEventListener('click', attackHandler => {
+attackBtn.addEventListener('click', attakHandler => {
     attackMonster(MODE_ATTACK);
 });
 strongAttackBtn.addEventListener("click", strongAttackHandler => {
