@@ -1,12 +1,26 @@
-const enteredValue = prompt('Maximum life for you end the monster.', '100');
-let chosenMaxLife = parseInt(enteredValue);
+
+function getMaxLifeValues () {
+    const enteredValue = prompt('Maximum life for you end the monster.', '100');
+    const parsedValue = parseInt(enteredValue);
+    // This is an if check to be sure the input is number
+    if (isNaN(parsedValue) || parsedValue <= 0) {
+    throw {message: 'Invalid user input, not a number'}
+    }
+    return parsedValue;
+}
+let chosenMaxLife;
+
+try {
+    chosenMaxLife = getMaxLifeValues();
+} catch (error) {
+    console.log(error);
+    chosenMaxLife = 100;
+}
+
+
 let batleLog = [];
 let lastLoggedEntry;
 
-// This is an if check to be sure the input is number
-if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
-    alert('Invalid input. Please refresh the page.');
-}
 
 const ATTACK_VALUE = (chosenMaxLife / 10);
 const STRONG_ATTACK_VALUE = (chosenMaxLife / 5.5);
@@ -190,24 +204,24 @@ function healPlayerHandler() {
     endRound();
 }
 function printLogHandler() {
-    for (let i = 0; i < batleLog.length; i++) { //for loop
-        console.log('-------');
-    }
+    // for (let i = 0; i < batleLog.length; i++) { //for loop
+    //     console.log('-------');
+    // }
     let j = 0;
     // while (j < 3) {
     //     console.log(j);
     //     j++
     // }
-    outerWhile: do {
-        console.log('Outer', j);
-        innerFor: for(let k = 0; k < 5; k++) {
-            if (k === 3) {
-                break outerWhile; //LABEL STATEMENT. stops the outer loop when the inner loop gets to number 3
-            }
-            console.log('inner', k);
-        }
-        j++;
-    } while (j < 3)
+    // outerWhile: do {
+    //     console.log('Outer', j);
+    //     innerFor: for(let k = 0; k < 5; k++) {
+    //         if (k === 3) {
+    //             break outerWhile; //LABEL STATEMENT. stops the outer loop when the inner loop gets to number 3
+    //         }
+    //         console.log('inner', k);
+    //     }
+    //     j++;
+    // } while (j < 3)
     // for (let i = 0; i < batleLog.length; i++){
     // console.log(batleLog[i]);
     // }
