@@ -15,7 +15,11 @@ try {
 } catch (error) {
     console.log(error);
     chosenMaxLife = 100;
-}
+    alert('You entered something wrong. Default value of 100 was used.')
+    // throw error;
+} //finally {
+
+// }
 
 
 let batleLog = [];
@@ -207,7 +211,7 @@ function printLogHandler() {
     // for (let i = 0; i < batleLog.length; i++) { //for loop
     //     console.log('-------');
     // }
-    let j = 0;
+    // let j = 0;
     // while (j < 3) {
     //     console.log(j);
     //     j++
